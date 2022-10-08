@@ -41,8 +41,7 @@ pipeline {
       }
       stage('Run Tests') {
          steps {
-            sh(script: """
-                  chmod +x ./tests/test_sample.py            
+            sh(script: """            
                 ./tests/test_sample.py
             """)
          }
