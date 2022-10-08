@@ -41,7 +41,7 @@ pipeline {
       }
       stage('Run Tests') {
          steps {
-            echo "testingggggggggggggggg"
+            echo ""
          }
       }
       stage('Stop test app') {
@@ -55,7 +55,7 @@ pipeline {
          parallel {
             stage('Run Anchore') {
                steps {
-                  powershell(script: """
+                  sh(script: """
                      Write-Output "blackdentech/jenkins-course" > anchore_images
                   """)
                   anchore bailOnFail: false, bailOnPluginFail: false, name: 'anchore_images'
