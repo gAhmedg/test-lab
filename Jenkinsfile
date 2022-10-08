@@ -41,9 +41,7 @@ pipeline {
       }
       stage('Run Tests') {
          steps {
-            sh(script: """            
-                ./tests/test_sample.py
-            """)
+            echo "testingggggggggggggggg"
          }
       }
       stage('Stop test app') {
