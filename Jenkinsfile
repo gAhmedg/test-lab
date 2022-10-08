@@ -56,7 +56,7 @@ pipeline {
             stage('Run Anchore') {
                steps {
                   sh(script: """
-                     Write-Output "blackdentech/jenkins-course" > anchore_images
+                     echo "blackdentech/jenkins-course" > anchore_images
                   """)
                   anchore bailOnFail: false, bailOnPluginFail: false, name: 'anchore_images'
                }
