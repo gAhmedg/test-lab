@@ -7,29 +7,28 @@ pipeline {
             echo "$GIT_BRANCH"
          }
       }
-      stage('Maven Build') {
-         steps {
+   //   stage('Maven Build') {
+   //      steps {
+   //         
+   //         sh(script: """
+   //               
+    //        mvn clean test
 
-               
-            sh(script: """
-                   
-            mvn clean test
-
-            """)
+     //       """)
 
             
             
-            post {
-            success {
-               echo "test successfully :)"
-            }
-            failure {
-               echo "test failed   :("
-            }
-            }
-         }
+   //      post {
+ //       success {
+  //         echo "test successfully :)"
+   //      }
+   //       failure {
+  //         echo "test failed   :("
+  //       }
+//       }
+ //     }
 
-      }
+   //}
 
       stage('Build Docker') {
          steps {
@@ -58,7 +57,6 @@ pipeline {
 
       
       
-     
       
    }
 }
