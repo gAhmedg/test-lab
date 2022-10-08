@@ -10,8 +10,13 @@ pipeline {
       stage('Maven Build') {
          steps {
 
-             sh 'mvn clean test'
-           
+               
+            sh(script: """
+                   
+            mvn clean test
+
+            """)
+
             
             
             post {
