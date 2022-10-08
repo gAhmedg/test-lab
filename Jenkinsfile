@@ -7,9 +7,32 @@ pipeline {
             echo "$GIT_BRANCH"
          }
       }
-      stage('Docker Build') {
+      stage('Maven Build') {
          steps {
-            sh(script: 'docker images -a')
+
+            sh(script: """
+                   
+            mvn clean test
+
+            """)
+
+            
+            
+            post {
+            success {
+               echo "test successfully :)"
+            }
+            failure {
+               echo "test failed   :("
+            }
+            }
+         }
+
+      }
+
+      stage('Build Docker') {
+         steps {
+           sh(script: 'docker images -a')
             sh(script: """
                    
                cd azure-vote/
@@ -19,58 +42,21 @@ pipeline {
                cd ..
 
             """)
-         }
-      }
-      stage('Start test app') {
-         steps {
-            sh(script: """
-               docker-compose up -d
-               chmod +x ./scripts/test_container.sh
-               ./scripts/test_container.sh
-               
-            """)
-         }
-         post {
+            post {
             success {
-               echo "App started successfully :)"
+               echo " docker successfully :)"
             }
             failure {
-               echo "App failed to start :("
+               echo "docker failed   :("
+            }
             }
          }
+         
       }
-      stage('Run Tests') {
-         steps {
-            echo ""
-         }
-      }
-      stage('Stop test app') {
-         steps {
-            sh(script: """
-               docker-compose down
-            """)
-         }
-      }
-      stage('Container Scanning') {
-         parallel {
-            stage('Run Anchore') {
-               steps {
-                  sh(script: """
-                     echo "blackdentech/jenkins-course" > anchore_images
-                  """)
-                  anchore bailOnFail: false, bailOnPluginFail: false, name: 'anchore_images'
-               }
-            }
-            stage('Run Trivy') {
-               steps {
-                  sleep(time: 10, unit: 'SECONDS')
-                  // pwsh(script: """
-                  // C:\\Windows\\System32\\wsl.exe -- sudo trivy blackdentech/jenkins-course
-                  // """)
-               }
-            }
-         }
-      }
+
+
+      
+      
      
       
    }
