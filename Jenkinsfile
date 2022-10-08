@@ -42,7 +42,8 @@ pipeline {
                cd ..
 
             """)
-            post {
+         }
+         post {
             success {
                echo " docker successfully :)"
             }
@@ -59,4 +60,4 @@ pipeline {
       
       
    }
-}
+
