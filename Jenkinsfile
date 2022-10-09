@@ -8,6 +8,34 @@ pipeline {
          }
       }
 
+
+            stage('test maven') {
+
+      steps {
+                
+             sh(script: """
+                   
+               cd l4/
+               mvn -Dmaven.test.failure.ignore=true clean package
+               cd ..
+
+            """)
+
+
+
+            }
+
+            post {
+                
+                success {
+                    junit '**/target/surefire-reports/TEST-*.xml'
+                    archiveArtifacts 'target/*.jar'
+                }
+                  failed {
+                 echo "failllllllllllll"
+                  }
+            }
+
       stage('Build Docker') {
          steps {
            sh(script: 'docker images -a')
