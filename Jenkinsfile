@@ -37,7 +37,7 @@ pipeline {
                    
                cd l4/
                docker images -a
-               docker build -t jenkins-pipeline .
+               docker build -t jenkins-pipeline2 .
                docker images -a
                cd ..
 
