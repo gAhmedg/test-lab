@@ -56,12 +56,12 @@ pipeline {
          stage('Build') {
             steps {
                 
-                 sh(script: """
+            
                    
-               cd l4/
-               mvn -Dmaven.test.failure.ignore=true clean package
+            sh   "cd l4/"
+            sh   "mvn -Dmaven.test.failure.ignore=true clean package"
 
-            """)
+            
          }
                   
 
