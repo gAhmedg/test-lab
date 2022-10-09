@@ -56,14 +56,14 @@ pipeline {
          stage('Build') {
             steps {
                 
-                  sh "cd l4/"
+                 sh(script: """
+                   
+               cd l4/
+               mvn -Dmaven.test.failure.ignore=true clean package
 
-                // Run Maven on a Unix agent.
-                sh "mvn -Dmaven.test.failure.ignore=true clean package"
-
-                // To run Maven on a Windows agent, use
-                // bat "mvn -Dmaven.test.failure.ignore=true clean package"
-            }
+            """)
+         }
+                  }
 
             post {
                 // If Maven was able to run the tests, even if some of the test
