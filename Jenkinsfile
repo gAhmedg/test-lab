@@ -35,6 +35,7 @@ pipeline {
                  echo "failllllllllllll"
                   }
             }
+            }
 
       stage('Build Docker') {
          steps {
