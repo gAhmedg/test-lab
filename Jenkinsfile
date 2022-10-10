@@ -16,7 +16,7 @@ pipeline {
              sh(script: """
                    
                cd l4/
-               mvn  build
+               mvn  clean test
                cd ..
 
             """)
