@@ -1,6 +1,12 @@
 pipeline {
    agent any
 
+   //    tools {
+   //       maven 3.8.6
+   //       }
+
+
+
    stages {
      stage('Verify Branch') {
          steps {
@@ -37,28 +43,28 @@ pipeline {
             }
             }
 
-      stage('Build Docker') {
-         steps {
-           sh(script: 'docker images -a')
-            sh(script: """
-                   
-               cd l4/
-               docker images -a
-               docker build -t jenkins-pipeline5 .
-               docker images -a
-               cd ..
-
-            """)
-         }
-         post {
-            success {
-               echo " docker successfully :)"
-            }
-            failure {
-               echo "docker failed   :("
-            }
-            }
-         }
+     // stage('Build Docker') {
+     //    steps {
+//            sh(script: 'docker images -a')
+  //           sh(script: """
+    //                
+      //          cd l4/
+        //        docker images -a
+  //              docker build -t jenkins-pipeline5 .
+    //            docker images -a
+      //          cd ..
+// 
+   //          """)
+//          }
+//          post {
+//             success {
+  //              echo " docker successfully :)"
+  //           }
+    //         failure {
+        //        echo "docker failed   :("
+     //        }
+         //    }
+        //  }
 
         
          
