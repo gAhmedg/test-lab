@@ -28,8 +28,8 @@ pipeline {
             post {
                 
                 success {
-                    junit '**14/target/surefire-reports/TEST-*.xml'
-                    archiveArtifacts '/target/*.jar'
+                    junit '**l4/target/surefire-reports/TEST-*.xml'
+                    archiveArtifacts 'l4/target/*.jar'
                 }
                   failure {
                  echo "failllllllllllll"
@@ -60,30 +60,7 @@ pipeline {
             }
          }
 
-         stage('Build') {
-            steps {
-                
-            
-                   
-            sh   "cd l4/"
-            sh   "mvn -Dmaven.test.failure.ignore=true clean package"
-
-            
-         }
-                  
-
-             
-            
-
-            post {
-                // If Maven was able to run the tests, even if some of the test
-                // failed, record the test results and archive the jar file.
-                success {
-                    junit '**/target/surefire-reports/TEST-*.xml'
-                    archiveArtifacts 'target/*.jar'
-                }
-            }
-        }
+        
          
     }
 }
