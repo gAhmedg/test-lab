@@ -1,9 +1,9 @@
 pipeline {
    agent any
 
-       tools {
-        maven "maven-3.8.6"
-         }
+     // tools {
+    //    maven "maven-3.8.6"
+      //  }
 
 
 
@@ -22,7 +22,7 @@ pipeline {
              sh(script: """
                    
                cd l4/
-               mvn  clean package
+               mvn -Dmaven.test.failure.ignore=true clean package
                cd ..
 
             """)
