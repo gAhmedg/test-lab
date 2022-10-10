@@ -16,7 +16,7 @@ pipeline {
              sh(script: """
                    
                cd l4/
-               mvn -Dmaven.test.failure.ignore=true clean package
+               mvn  build
                cd ..
 
             """)
@@ -29,7 +29,7 @@ pipeline {
                 
                 success {
                     junit '**14/target/surefire-reports/TEST-*.xml'
-                    archiveArtifacts '**14/target/*.jar'
+                    
                 }
                   failure {
                  echo "failllllllllllll"
