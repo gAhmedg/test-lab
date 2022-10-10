@@ -3,7 +3,6 @@ pipeline {
 
        tools {
         maven "maven-3.8.6"
-        sh (screipt :echo "using maven tool")
          }
 
 
