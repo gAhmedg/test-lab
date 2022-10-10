@@ -22,7 +22,7 @@ pipeline {
              sh(script: """
                    
                cd l4/
-               mvn -Dmaven.test.failure.ignore=true clean package
+               mvn  clean package
                cd ..
 
             """)
