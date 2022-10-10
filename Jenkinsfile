@@ -29,7 +29,7 @@ pipeline {
                 
                 success {
                     junit '**14/target/surefire-reports/TEST-*.xml'
-                    
+                    archiveArtifacts '/target/*.jar'
                 }
                   failure {
                  echo "failllllllllllll"
